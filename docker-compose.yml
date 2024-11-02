@@ -7,9 +7,11 @@ services:
     environment:
       KEYCLOAK_ADMIN: keycloak
       KEYCLOAK_ADMIN_PASSWORD: 123
-    command: ["start-dev"]
+    command: ["start-dev", "--import-realm"]
     ports:
       - "8079:8080"
+    volumes:
+      - ./docker:/opt/keycloak/data/import
 
   postgres:
     image: postgres:latest

@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "username": "admin",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "admin",
+          "temporary": false
+        }
+      ],
+      "realmRoles": ["ROLE_ADMIN"]
+    },
+    {
+      "username": "ivanov",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "ivanov",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "username": "petrov",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "petrov",
+          "temporary": false
+        }
+      ]
+    }
+  ]
+}
