@@ -1,0 +1,56 @@
+server:
+  port: 0
+spring:
+  application:
+    name: account
+  profiles:
+    active: file
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8079/realms/master
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: account-telros
+            client-secret: AUz2BabVlTyvJFbdE5PLqYA8vURFWzdm
+            scope:
+              - openid
+              - microprofile-jwt
+              - account_telros_scope
+            authorization-grant-type: authorization_code
+            provider: keycloak
+          account-telros:
+            client-id: account-telros
+            client-secret: AUz2BabVlTyvJFbdE5PLqYA8vURFWzdm
+            scope:
+              - openid
+              - microprofile-jwt
+              - account_telros_scope
+            authorization-grant-type: client_credentials
+            provider: keycloak
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8079/realms/master
+  datasource:
+    url: jdbc:postgresql://localhost:15432/postgres_db
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: 123
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+

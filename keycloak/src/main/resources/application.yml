@@ -1,0 +1,33 @@
+server:
+  port: 0
+spring:
+  application:
+    name: keycloak
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8079/realms/master
+            user-name-attribute: preferred_username
+        registration:
+          keycloak:
+            client-id: admin-telros
+            client-secret: 6ayDdqYZKNSGIoPxOyHGh85XJUtx7zSF
+            scope:
+              - openid
+              - microprofile-jwt
+              - admin_telros_scope
+            authorization-grant-type: authorization_code
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8079/realms/master
+
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
